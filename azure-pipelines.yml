@@ -17,4 +17,3 @@ steps:
     sdk: 'iphoneos'
     configuration: 'Release'
     xcodeVersion: 'default' # Options: 8, 9, 10, default, specifyPath
-    packageApp: false
