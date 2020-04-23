@@ -56,6 +56,17 @@ struct ContentView: View {
                 Section(header: Text("Stay Home and Nut")) {
                     ForEach(self.nutItems) { nutItem in
                         Text("\(nutItem.createdAt!)")
+                    }.onDelete { indexSet in
+                        let deletedItem = self.nutItems[indexSet.first!]
+                        // delete
+                        self.context.delete(deletedItem)
+                        
+                        // update
+                        do {
+                            try self.context.save()
+                        } catch {
+                            print(error)
+                        }
                     }
                 }
             }
