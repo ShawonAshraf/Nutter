@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    //MARK: coredata
+    // MARK: coredata
     @Environment(\.managedObjectContext) var context
     @FetchRequest(fetchRequest: NutItem.getAllNuts()) var nutItems: FetchedResults<NutItem>
     
@@ -19,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             
-            //MARK: header
+            // MARK: header
             HStack {
                 Text("Nut Count : \(self.nutItems.count)")
                     .font(.largeTitle)
@@ -48,10 +48,10 @@ struct ContentView: View {
             }
             .padding()
             
-            //MARK: space
+            // MARK: space
             Spacer()
             
-            //MARK: nut info rows
+            // MARK: nut info rows
             List {
                 Section(header: Text("Stay Home and Nut")) {
                     ForEach(self.nutItems) { nutItem in
