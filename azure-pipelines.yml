@@ -9,11 +9,17 @@ trigger:
 pool:
   vmImage: 'macos-latest'
 
+variables:
+  scheme: ''
+  sdk: 'iphoneos'
+  configuration: 'Release'
+
 steps:
 - task: Xcode@5
   inputs:
-    actions: 'build'
+    sdk: '$(sdk)'
     scheme: '$(scheme)'
-    sdk: 'iphoneos'
-    configuration: 'Release'
-    xcodeVersion: 'default' # Options: 8, 9, 10, default, specifyPath
+    configuration: '$(configuration)'
+    xcodeVersion: 'default' # Options: default, 10, 9, 8, specifyPath
+    exportPath: '$(agent.buildDirectory)/output/$(sdk)/$(configuration)'
+    packageApp: false
